@@ -1,0 +1,379 @@
+
+Source from Alex Valaitis: https://web3pills.substack.com/p/a-deep-dive-on-cosmos?sd=pf
+
+Cosmos: The Internet of Blockchains
+In the years since Satoshi Nakamoto published the Bitcoin whitepaper, we’ve seen an explosion in the adoption of blockchains from developers and users alike.
+
+This increase in adoption has introduced a new set of problems, namely around constraints at the consensus, networking, and application layers.
+As a result of these issues, teams have jumped at the opportunity to introduce their own unique solutions to solve these limitations. Whether it’s Solana with their attempt to build a highly performant layer-1 blockchain or Ethereum with its layer-2 scaling solutions, there has been no shortage of new approaches.
+Today we are going to dive into Cosmos, which has taken one of the most unique approaches to scaling blockchains. Specifically, instead of building on/around a single layer-1 blockchain, Cosmos has made the decision to lean into a multi-chain future consisting of several specialized, sovereign blockchains that are interoperable thanks to a common tech stack.
+By the end of this report you should have a much better idea of the Cosmos tech, it’s ecosystem of blockchains and dApps, as well as some insights into how you can get involved.
+Cosmos is unique from many other layer-1 blockchains in that it is not based on a SINGLE blockchain, but rather, a network of blockchains.
+These blockchains are built using a common tech stack and communicate via a shared protocol (more on that shortly).
+In order to break down Cosmos in simple terms, I want to leverage the WHY, HOW, WHAT thread I laid out in a Twitter thread:
+
+WHY does Cosmos exist:
+
+The problem that Cosmos is attempting to solve is to allow for "multiple parallel blockchains to interoperate while retaining their security properties”. The team has made it clear that they believe in a multi-chain future & want to support that vision.
+WHY multi-chain:
+All blockchain networks face the same limitations, particularly when it comes to scalability. Most solutions for scalability involve building layers on top of the base layer-1 blockchain or raising hardware requirements, which hurts decentralization and/or security.
+In a multi-chain future you could keep the security properties of layer-1 blockchains while solving for scalability (by spreading the computation/transactions among different layer-1s).
+It also allows for a concept called 'application-specific blockchains'.
+
+WHY application-specific blockchains:
+
+As Gautier Marin describes in his blog post Why application-specific blockchains make sense:
+
+"Developing your dApp as a blockchain means you only have to define the transaction types & state transition functions that your application needs. This will greatly increase the application’s performance."
+
+
+With the Cosmos-SDK & Tendermint consensus, developers can easily build their own blockchain (something that historically would not have been possible).
+
+Gautier goes on to argue that while many blockchains have been focused on the networking and consensus layers, it’s actually the application layer that is the real bottleneck.
+
+Furthermore, application-specific blockchains provide additional benefits such as security (since virtual-machines provide a large attack-surface) and sovereignty (governance can be handled on an individual application by application basis).
+
+HOW Cosmos will enable this multi-chain future:
+
+In order to enable this multi-chain future, Cosmos is focusing on 3 specific areas:
+
+1) Make it as easy as possible for developers to build a blockchain
+
+2) Ensure those blockchains are decentralized/secure
+
+3) Enable passing assets & data between those blockchains
+
+WHAT tools Cosmos provides to developers:
+
+In order to fully understand the Cosmos tech stack, we will look into 4 distinct features of Cosmos:
+
+1) Tendermint Core consensus engine
+
+2) Cosmos SDK
+
+3) Inter-blockchain communication protocol (IBC)
+
+4) Cosmos Hub
+
+Tendermint Core consensus engine
+
+Tendermint is a Byzantine Fault Tolerance (BFT) consensus algorithm, which is designed to ensure finality, order consistency, and optional availability.
+
+It’s also worth noting, that Tendermint leverages a Proof-of-Stake (PoS) consensus mechanism, which many consider to be an improvement over Proof-of-Work (PoW) from a speed, scalability, and environmental standpoint.
+
+Tendermint has a reputation for being scalable, with it reportedly supporting ~10,000 transactions per second.
+
+However, there has been some push back from the wider crypto community that this comes at the cost of centralization. According to Coin Bureau’s latest video, most Tendermint-based blockchains have “100 or fewer validators”. Even Cosmos hub, reportedly only supports 175 validators.
+
+You can read more about Tendermint here.
+
+Note: There are some permissioned blockchains in the Cosmos ecosystem that leverage Proof-of-Authority (PoA), but most are leveraging PoS implementations.
+
+Cosmos SDK
+
+The Cosmos SDK provides an open-source framework for developers to build blockchain-based applications.
+
+The SDK is built around the concept of composable modules, which are mostly open-source. Also anyone can create a new module and submit it to the Cosmos SDK.
+
+This makes it much easier for developers to build blockchain-based applications, as they can use the existing modules instead of starting from scratch.
+
+These include commonly needed modules such as: Auth, Mint, Governance, Distribution, etc.
+
+Inter-blockchain communication protocol (IBC)
+
+Twitter avatar for @alex_valaitis
+Alex Valaitis 
+@alex_valaitis
+Let's have a convo on @chainlink CCIP vs @cosmos IBC
+
+I just researched Chainlink & am currently researching Cosmos. 
+
+The parallels immediately stood out. Here's what I know so far & where I have questions 🧵
+September 1st 2022
+
+19 Retweets69 Likes
+The IBC standard is the one being adopted by (almost) every chain in the Cosmos ecosystem. From the IBC docs:
+
+"IBC consists of 2 distinct layers: the TRANSPORT layer which provides the infrastructure to establish secure connections & authenticate data packets between chains & the APPLICATION layer, which defines how these data packets should be packaged & interpreted by the chains."
+
+In simple terms, IBC allows blockchains to be built on the same standard to "talk to each other."
+
+"This means being able to transfer tokens and other data frictionlessly and trustlessly between previously unconnected blockchains".
+
+Hello cross-chain dApps!
+
+Lastly, it’s worth noting that IBC is modeled after TCP/IP, which is the open standard that the majority of the current “Web2” internet has been built upon.
+
+Cosmos Hub
+
+This is one of the blockchains in the ecosystem that is built by the Cosmos team (it was also the first Cosmos-based blockchain). It helps keep a record of the total tokens in each “zone”, I.e. the other blockchains in the ecosystem.
+
+The Cosmos blockchain runs on native $ATOM asset, which has the largest market cap of all Cosmos-based blockchains at the time of this writing.
+
+Interchain security
+
+Image
+Another recent development in the Cosmos ecosystem is the concept of “interchain security”. One of the downsides of launching a PoS blockchain from scratch, is that it can be particularly vulnerable to attacks in the early days.
+
+Cosmos’ interchain security system solves for this by allowing smaller blockchains to effectively “rent” security from more established networks, such as from the Cosmos Hub.
+
+In addition, Cosmos Hub validators will be able to secure new consumer chains in exchange for staking rewards.
+
+Tokenomics
+
+Breaking down the tokenomics for Cosmos is a bit more complicated than for a typical blockchain. Unlike blockchains that are based around a single native asset (like ETH, SOL, etc.) + other fungible tokens (UNI, COMP, etc.); Cosmos has multiple blockchains each with their own native asset.
+
+In the interest of time, we will focus primarily on the tokenomics of $ATOM, the native token of Cosmos Hub, since it is currently the largest by market cap.
+
+The ATOM token is used to help secure the Cosmos Hub blockchain (and smaller blockchains through interchain security), as well as to transact on the Cosmos Hub blockchain. The ATOM token can also be used for participating in Cosmos Hub governance.
+
+The ATOM token was launched by the Interchain Foundation (ICF), in 2017 through 3 funding rounds (2 private & 1 public)
+
+
+According to Messari Crypto, the ICF categorized the recipients of minted ATOMs into 4 different blocks:
+
+Private contributors: 7.1% of initial supply was sent to strategic and early adopters, with another 5% going to seed contributors.
+
+Public contributors: Contributors in the public sale received 67.9% of the initial supply.
+
+All In Bits Inc (Tendermint inc): Received 10% of the initial supply for developing the open-source IP that is used in the Cosmos Network.
+
+Interchain Foundation (ICF): Received 10% of the initial supply to pursue their R&D activities for Web 3.0
+
+ATOM currently has a circulating supply of ~286 Million ATOM according to CoinMarketCap. The total supply is not currently capped, making ATOM an inflationary token with a targeted annual inflation rate that is recalculated every block.
+
+Note: the annual inflation is said to be capped between 7% and 20%, with the inflation rate moving up or down depending on how much ATOM is being staked.
+
+The Cosmos dApp + NFT Ecosystem 📱
+Given Cosmos’ unique positioning as an internet of blockchains, I found onboarding to the Cosmos ecosystem to be a tad bit more convoluted than other blockchains.
+
+However, once I was set up, I was able to explore some of the most interesting use-cases I’ve seen in all of crypto, enabled by its interchain capabilities.
+
+Cosmos Wallets
+
+
+As is the case with any blockchain, in order to interact with the network you need a wallet. After a short amount of research I stumbled upon Keplr wallet, which seems to be the gold standard for IBC wallets.
+
+Aside from having a great onboarding experience (including a sign up with Gmail option), Keplr was the first wallet I had seen that was branded as an “interchain wallet”.
+
+I’ve used something somewhat similar with MetaMask, which can act as a cross-chain wallet by adding RPCs/new networks. However, since most blockchains are not default interoperable, there is usually a bridging process that must be done as well.
+
+Once I had my Keplr wallet set up, I was ready to start exploring some dApps. However, before I could do that, I realized there was an extra step I needed to take before I could start diving into use cases.
+
+I needed to understand the different blockchains in the Cosmos ecosystem.
+
+Cosmos Blockchains
+
+Cosmos Ecosystem Development and the EVMos Opportunity | by DecryptCrypto |  DAO Pulse
+One thing that really took me by surprise when I first started looking into Cosmos, was just how many legitimate and large sovereign blockchains have been built on its network.
+
+Among these blockchains are the likes of: BNB Chain*, Osmosis, Cronos, Crypto.org, Juno, Stargaze, and more.
+
+It’s also worth noting, that up until a few months ago, the Terra blockchain (which was built on the Cosmos network) held one of the highest market caps in ALL of crypto before it’s epic collapse.
+
+Based on my knowledge, the Terra collapse was due to it’s unsustainable, algorithmically-backed stablecoin, and not any issues with the underlying Cosmos tech.
+
+While some may try to paint Terra as a black eye for Cosmos, I think it’s actually an overall strong signal that an IBC-based chain was able to grow so large so quickly & also not take down the rest of the Cosmos network with it.
+
+Lastly, I’ll note that I was only able to test out a few of the blockchains in Cosmos ecosystem. This was largely due to time constraints; however, I did want to highlight a few of the blockchains that I was able to explore.
+
+*BNB chain (previously Binance Smart Chain) leverages Cosmos SDK but is not IBC-enabled
+
+Osmosis - Interchain DEX
+
+Image
+I’ve used plenty of DEX’s before on other blockchains; however, Osmosis was unique in that it was the first interchain AMM DEX.
+
+Unlike other DEXs, like Uniswap that trade between assets on the same chain, Osmosis actually allows users to swap assets between chains! 🤯
+
+This is actually a pretty crucial project, since it was the easiest way I could find for swapping to the native assets of other Cosmos blockchains. This is necessary, since to transact on any them, you need some amount of its native token.
+
+Also note, that Osmosis is what is considered an application-based blockchain. The blockchain exists to serve the focused purpose of operating as an AMM DEX, which makes it highly performant and suited for its use case.
+
+Stargazer - Cosmos NFTs
+
+Twitter avatar for @alex_valaitis
+Alex Valaitis 
+@alex_valaitis
+Just bought my first NFT in the @cosmos ⚛️ ecosystem!
+
+It's a @stargazepunks, minted on the @StargazeZone blockchain
+
+This was a very unique NFT buying experience that taught me a lot about IBC/Cosmos
+
+Here's what the process looked like & why NFT app chains could be the future🧵 
+Image
+August 31st 2022
+
+17 Retweets118 Likes
+While I’m not as deeply invested in NFTs as some people in the Web3 space, I recognize that they are a crucial primitive. Over the past year or so, we’ve seen just how much impact a hot NFT collection can have on the culture and TVL of a blockchain.
+
+After some initial digging on Cosmos, I was pleased to stumble upon an IBC blockchain that is purpose-built for NFTs.
+
+Between Keplr + Osmosis (as well as some help in the Stargazer discord), I was quickly able to pick up some $STARS (the native token of Stargaze) and start shopping. I ultimately landed on a ‘Stargaze Punks’ NFT.
+
+At this point, Stargazer NFT collections aren’t at the magnitude of top collections on blockchains like Ethereum and Solana. However, it was the underlying blockchain that that caught my attention.
+
+With popular mints clogging up (or even shutting down) other blockchains, the concept of a purpose-built NFT blockchain ought to be compelling to developers.
+
+Only time will tell if this is enough to attract NFT project founders who can then bring the collectors and liquidity with them.
+
+Juno Network - Smart contracts
+
+Given that the majority of Web3-focused developers are still working with smart contracts, it’s crucial that the Cosmos ecosystem has a blockchain dedicated to smart contracts. Juno fills this gap.
+
+Among it’s focuses is ‘CosmWasm’, short for “Web Assembly virtual machines in the Cosmos SDK”.
+
+As well as supporting a robust ecosystem of smart-contract powered dApps that have already been launched on it’s blockchain.
+
+Evmos - EVM hub
+
+As Evmos describes on their website:
+
+“Evmos is bringing the world of Ethereum-based applications and assets to the interoperable networks of the Cosmos ecosystem, all while aligning developer and user incentives.”
+
+Given all of the developer (as well as user) traction on the Ethereum network, there is value in having a dedicated Cosmos blockchain that is fully compatible and interoperable with Ethereum.
+
+Already to date, Evmos can boast the likes of Aave and Gnosis safe as applications that it supports, alongside a rapidly growing ecosystem.
+
+Secret Network - Privacy
+
+One of the major lessons of this last bull cycle was the importance of security on blockchains. Blockchains are public ledgers, however, there are technologies that exist to allow users to maintain privacy.
+
+Secret network is the go-to privacy network on the Cosmos blockchain. It supports smart contract driven dApps that preserve a user’s privacy, and encrypts inputs, outputs and state by default.
+
+It already has a host of apps built on its ecosystem, and I hope to see this list continue to expand as developers begin to put more emphasis on privacy in Web3.
+
+Summary
+
+
+You can check out some of the most active ‘zones’ on Cosmos at: mapofzones.com
+In reality, I could have devoted many more sections to breaking down all of the different blockchains built on Cosmos. Not to mention, some of these networks have reached the size where they almost deserve a standalone report of their own!
+
+The key takeaway from this section though should be the strength of the multi-chain approach that Cosmos enables. We’ve already seen multiple sovereign blockchains reach strong adoption, solving for completely different use cases.
+
+Lastly, we can expect many new exciting IBC-compatible blockchains to pop up, including DYDX’s standalone blockchain that the team recently announced. The DYDX announcement was MASSIVE, since DYDX is one of the top dApps on Ethereum and was a strong cosign for the application-specific blockchain approach.
+
+Will we see other top dApps follow DYDX’s lead? Stay tuned.
+
+The Cosmos Community 🤝
+I’ve long stated that strong technology and delightful dApps aren’t enough to win in Web3 today. You also need a large and active community.
+
+I can now say with absolute certainty that Cosmos has one of the top communities in all of crypto, however that wasn’t immediately obvious to me:
+
+Twitter avatar for @alex_valaitis
+Alex Valaitis 
+@alex_valaitis
+The lack of engagement from @cosmos community has been discouraging 🤔
+
+Especially after covering @Cardano, @chainlink, etc.
+
+Figure it has to be 1 of 3 things:
+
+1) Weak core community similar to @BNBCHAIN 
+2) Not breaking through algorithm
+3) Sub-communities ($JUNO) are stronger
+August 9th 2022
+
+14 Retweets217 Likes
+As you can see from my above tweet, initially I was doubting the engagement from the Cosmos community.
+
+After my experience researching BNB Chain (which I learned is actually a mercenary chain propped up by Binance), I started to wonder if the Cosmos community was artificial.
+
+However, as you can now see from the engagement on that tweet, boy did I have that wrong. The wider Cosmos community came out in full force !
+
+There was some really important learnings from that tweet thread though. The first, is that the Cosmos community is not built like most communities in crypto.
+
+Specifically, while there is a strong general core around Cosmos, to fully appreciate the energy of the community, you need to tap into the sub-communities that exist around different Cosmos zones.
+
+As @mccallthewild aptly put it, my initial tweet was the equivalent of asking why the IP/TCP community is so quiet?
+
+Image
+There are both pros and cons to this type of community. The pros include the fact that it allows everyone to find a blockchain that they are interested in and fits their needs. This allows for better governance and engagement on a blockchain by blockchain level.
+
+However, there are cons as well, such as the fact that much of the existing metrics for evaluating blockchain networks are built around singular blockchains.
+
+Twitter avatar for @alex_valaitis
+Alex Valaitis 
+@alex_valaitis
+Today I want to talk about why @cosmos ⚛️ calls itself the "internet of blockchains"
+
+Once you read this thread you will understand why Cosmos has flown under so many peoples' radars & remains underrated🧵
+August 24th 2022
+
+14 Retweets107 Likes
+It’s possible to imagine a future in which 1 or 2 IBC blockchains rise to prominence, and many people don’t even realize that it’s on the Cosmos network. We began to see that with Terra.
+
+Whether that’s a good or bad thing is open for debate, however this dynamic is important to understand for anyone new to Cosmos.
+
+Overall, the Cosmos community is a hybrid of an overarching community of like-minded builders and users, coupled with several smaller focused communities. While this dynamic can be frustrating at times, if you have the patience, it really is a pleasure to be involved with both.
+
+Conclusion
+Without a doubt Cosmos is one of the most intriguing and unique projects in all of Web3.
+
+By going all in on a multi-chain future, Cosmos has put itself into a unique category in which they are the clear leader.
+
+The future of both Web3 and Cosmos, will ultimately depend on what developers value most.
+
+If the social consensus among developers is that decentralization (i.e. the Nakamoto coefficient) or building where users/liquidity already exist should be the priority, then there are probably better positioned blockchains right now.
+
+However, if developers collectively decide that sovereignty and application-based blockchains are the future, Cosmos would be perfectly positioned to capitalize on this sentiment.
+
+Only time will tell if the Cosmos thesis is correct; however this much is clear to me: ignore Cosmos and the multi-chain vision at your own peril.
+
+-Alex Valaitis
+
+I don’t charge any $ for my content, but if you want to support me, here’s 3 different ways that you can:
+
+1)Tip me in any IBC compatible token or NFT ($ATOM, $JUNO, $OSMO, $STARS):
+
+cosmos1jw309p70vvfr325j9j0vsx8x8l0hkzere7wzm5
+
+2)Subscribe to this newsletter ‘Web3 Pills’ :
+
+Thanks for reading Web3 Pills by Alex Valaitis! Subscribe for free to receive new posts and support my work.
+
+Type your email…
+Subscribe
+3)Follow me on Twitter: @Alex_Valaitis
+
+Disclaimers:
+
+None of the information above is meant to be financial advice. Please DYOR.
+
+
+3 likes
+Comments
+
+Write a comment…
+
+The Ultimate Guide to Cardano
+Demystifying one of the most enigmatic and important blockchains in Web3
+ALEX VALAITIS
+MAY 27
+13
+1
+
+A Deep Dive on Chainlink
+Unpacking hybrid smart contracts, ecosystem integrations, and everything in between
+ALEX VALAITIS
+JUL 28
+10
+1
+
+The Ultimate Guide to Solana
+A deep dive into one of the hottest layer-1 blockchains of the past year
+ALEX VALAITIS
+MAY 10
+4
+3
+See all
+Ready for more?
+Type your email…
+Subscribe
+© 2022 Alex Valaitis
+Market data by Intrinio
+Privacy ∙ Terms ∙ Collection notice
+Publish on Substack
+Get the app
+Substack is the home for great writing
